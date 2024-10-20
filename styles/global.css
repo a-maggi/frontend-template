@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 146 1% 9%;
+    --foreground: 152 56% 95%;
+    --card: 146 25% 5%;
+    --card-foreground: 60 9.1% 97.8%;
+    --popover: 146 1% 11%;
+    --popover-foreground: var(--foreground);
+    --primary: 152 72% 27%;
+    --primary-foreground: 152 56% 95%;
+    --secondary: 12 6.5% 15.1%;
+    --secondary-foreground: 60 9.1% 97.8%;
+    --muted: 140 10% 20%;
+    --muted-foreground: 146 8% 50%;
+    --accent: 152 27.9% 16.9%;
+    --accent-foreground: 152 56% 95%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 146 1% 12%;
+    --input: var(--muted);
+    --input-background: 146 1% 12%;
+    --ring: 24 5.7% 82.9%;
+  }
+
+  .dark {
+    --background: 146 1% 9%;
+    --foreground: 152 56% 95%;
+    --card: 146 25% 5%;
+    --card-foreground: 60 9.1% 97.8%;
+    --popover: 146 1% 11%;
+    --popover-foreground: var(--foreground);
+    --primary: 152 72% 27%;
+    --primary-foreground: 152 56% 95%;
+    --secondary: 12 6.5% 15.1%;
+    --secondary-foreground: 60 9.1% 97.8%;
+    --muted: 140 10% 20%;
+    --muted-foreground: 146 8% 50%;
+    --accent: 152 27.9% 16.9%;
+    --accent-foreground: 152 56% 95%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 146 1% 12%;
+    --input: var(--muted);
+    --input-background: 146 1% 12%;
+    --ring: 24 5.7% 82.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+    @apply text-base leading-7 tracking-normal;
+  }
+}
+@layer utilities {
+  .leading-none {
+    line-height: 1rem;
+  }
+}
+::selection {
+  background-color: #47a3f3;
+  color: #fefefe;
+}
+
+html {
+  min-width: 360px;
+  scroll-behavior: smooth;
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+}
+
+.container {
+  @apply px-4 md:px-8 w-full;
+}
+
+main {
+  animation: fadeIn 1s;
+}
+
+.prose img {
+  /* Don't apply styles to next/image */
+  @apply m-0;
+}
+
+.prose > :first-child {
+  /* Override removing top margin, causing layout shift */
+  margin-top: 1.25em !important;
+  margin-bottom: 1.25em !important;
+}
+
+@layer utilities {
+  .dropdown-menu-content {
+    width: var(--radix-dropdown-menu-trigger-width);
+    max-height: var(--radix-dropdown-menu-content-available-height);
+  }
+}
+
+.separator {
+  @apply bg-secondary-200;
+  height: 1px;
+}
+
+/* Remove Safari input shadow on mobile */
+input[type="text"],
+input[type="email"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.fr-top,
+.fr-second-toolbar {
+  border-radius: 0 !important;
+}
