@@ -5,7 +5,7 @@ import { cn } from "lib/utils";
 import Button from "components/form-elements/button";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "components/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "components/ui/popover";
-import { useMatchMedia } from "lib/styleHelpers";
+import useMatchMedia from "hooks/useMatchMedia";
 import { Drawer, DrawerContent, DrawerTrigger } from "components/ui/drawer";
 
 type option = {

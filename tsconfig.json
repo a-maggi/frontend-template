@@ -21,7 +21,8 @@
       "components/*": ["./components/*"],
       "lib/*": ["./lib/*"],
       "styles/*": ["./styles/*"],
-      "db/*": ["./db/*"]
+      "db/*": ["./db/*"],
+      "hooks/*": ["./hooks/*"],
     },
     "typeRoots": ["./types"]
   },

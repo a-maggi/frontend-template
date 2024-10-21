@@ -21,7 +21,7 @@ import {
   DrawerTitle,
   DrawerTrigger
 } from "components/ui/drawer";
-import { useMatchMedia } from "lib/styleHelpers";
+import useMatchMedia from "hooks/useMatchMedia";
 
 interface BaseProps {
   children: React.ReactNode;
