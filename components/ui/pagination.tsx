@@ -1,8 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import Button from "../form-elements/button";
+import Button from "./button";
 import { RxChevronLeft, RxChevronRight } from "react-icons/rx";
-import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 
 export interface PaginationProps {

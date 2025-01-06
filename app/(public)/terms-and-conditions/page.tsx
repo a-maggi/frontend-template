@@ -1,8 +1,8 @@
 import { Metadata } from "next";
-import { config } from "../../config";
+import { config } from "../../../config";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
+  title: "Terms and Conditions",
   robots: "noindex"
 };
 
@@ -12,7 +12,7 @@ export default function Page() {
       <header className="flex-col md:flex-row flex text-center md:text-left items-center gap-10">
         <div className="flex-1">
           <h2 className="mb-4 text-5xl font-bold leading-tight tracking-tighter md:text-5xl lg:leading-[1.1] md:block">
-            Privacy Policy
+            Terms and Conditions
           </h2>
         </div>
       </header>

@@ -85,18 +85,39 @@ export const authOptions: NextAuthOptions = {
     //   });
     //   return isDev ? true : firstSignIn;
     // },
-    async session({ session, user, token }) {
-      return { ...session, user: { ...session.user, id: token.sub } };
-    }
+    async session({ session, user, token }): Promise<any | null> {
+      if (token.error || token.exp === 0) {
+        return null;
+      }
+      return { ...session, user: { ...session.user, id: token.sub! } };
+    },
     // async redirect({ url, baseUrl }) {
     //   return baseUrl
     // },
-    // async jwt({ token, user, account, profile, isNewUser }) {
-    //   return token;
-    // }
+    async jwt({ token, user }): Promise<any | null> {
+      // Check if user exists in database on every token rotation
+      if (token.sub) {
+        const userExists = await prisma.user.findUnique({
+          where: { id: token.sub },
+          select: { id: true }
+        });
+
+        if (!userExists) {
+          return {
+            ...token,
+            error: "UserNotFound",
+            exp: 0 // Expire the token immediately
+          };
+        }
+      }
+
+      return token;
+    }
   },
   session: {
-    strategy: "jwt"
+    strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+    updateAge: 24 * 60 * 60 // 24 hours
   },
   events: {
     async createUser(message) {

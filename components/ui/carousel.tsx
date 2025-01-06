@@ -4,7 +4,7 @@ import { cn } from "lib/utils";
 import useMatchMedia from "hooks/useMatchMedia";
 import { RxChevronLeft, RxChevronRight } from "react-icons/rx";
 import { motion, PanInfo, useMotionValue, useSpring } from "framer-motion";
-import Button from "components/form-elements/button";
+import Button from "components/ui/button";
 
 export interface CarouselProps {
   /**
