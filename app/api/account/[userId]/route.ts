@@ -6,9 +6,10 @@ import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
 
-export async function PUT(request: NextRequest, { params }: { params: { userId: string } }) {
+export async function PUT(_request: NextRequest, props: { params: Promise<{ userId: string }> }) {
+  const params = await props.params;
   const userId = params.userId;
-  const { currentPassword, newPassword, confirmPassword } = await request.json();
+  const { currentPassword, newPassword, confirmPassword } = await _request.json();
 
   if (!currentPassword || !newPassword || !confirmPassword) {
     return Response.json({ message: "All fields are required" }, { status: 400 });
@@ -67,8 +68,9 @@ export async function PUT(request: NextRequest, { params }: { params: { userId: 
   return Response.json({ message: "Password updated" });
 }
 
-export async function DELETE(request: NextRequest, { params }: { params: { userId: string } }) {
-  const { email } = await request.json();
+export async function DELETE(_request: NextRequest, props: { params: Promise<{ userId: string }> }) {
+  const params = await props.params;
+  const { email } = await _request.json();
   const userId = params.userId;
 
   if (!email) {

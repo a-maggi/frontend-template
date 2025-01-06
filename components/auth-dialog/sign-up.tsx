@@ -2,10 +2,10 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { BsGoogle, BsTwitterX } from "react-icons/bs";
-import Button from "../form-elements/button";
-import Label from "../form-elements/label";
-import Input from "../form-elements/input";
-import { useToast } from "../toast";
+import Button from "components/ui/button";
+import Label from "components/form-elements/label";
+import Input from "components/form-elements/input";
+import { useToast } from "components/toast";
 import { useSearchParams } from "next/navigation";
 import { handlePageRevalidation } from "./actions";
 import {

@@ -20,7 +20,7 @@ export default async function Layout({ children }: LayoutProps) {
   return (
     <SidebarProvider>
       <section className="h-screen w-full">
-        <Container>{children}</Container>
+        <Container session={session}>{children}</Container>
       </section>
     </SidebarProvider>
   );

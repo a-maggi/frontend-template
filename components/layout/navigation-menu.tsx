@@ -11,7 +11,7 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle
 } from "components/ui/navigation-menu";
-import Button from "components/form-elements/button";
+import Button from "components/ui/button";
 import { RxCross2 } from "react-icons/rx";
 import { usePathname } from "next/navigation";
 import { BiMenu } from "react-icons/bi";

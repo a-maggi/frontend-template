@@ -1,11 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import { signIn } from "next-auth/react";
-import Button from "../form-elements/button";
+import Button from "components/ui/button";
 import { BsGoogle, BsTwitterX } from "react-icons/bs";
-import Label from "../form-elements/label";
-import Input from "../form-elements/input";
-import { useToast } from "../toast";
+import Label from "components/form-elements/label";
+import Input from "components/form-elements/input";
+import { useToast } from "components/toast";
 import { cn } from "lib/utils";
 import { CgSpinner } from "react-icons/cg";
 import { handlePageRevalidation } from "./actions";
@@ -34,6 +34,8 @@ const SignIn: React.FC<SignInProps> = ({ isModal = true, onSuccess }) => {
 
   const searchParams = useSearchParams();
 
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
+
   const error = searchParams.get("error");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -43,7 +45,7 @@ const SignIn: React.FC<SignInProps> = ({ isModal = true, onSuccess }) => {
       setFormValues({ email: "", password: "" });
 
       const res = await signIn("credentials", {
-        redirect: false,
+        redirect: true,
         email: formValues.email,
         password: formValues.password,
         callbackUrl
@@ -81,7 +83,7 @@ const SignIn: React.FC<SignInProps> = ({ isModal = true, onSuccess }) => {
     e.preventDefault();
     // disable the button
     e.currentTarget.disabled = true;
-    await signIn(provider, { redirect: false });
+    await signIn(provider, { callbackUrl, redirect: true });
   };
 
   return (

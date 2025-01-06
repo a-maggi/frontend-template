@@ -8,7 +8,8 @@ import { sendOtpCodeEmail } from "lib/emails/send-otp-code";
 
 const prisma = new PrismaClient();
 
-export async function GET(_request: NextRequest, { params }: { params: { userId: string } }) {
+export async function GET(_request: NextRequest, props: { params: Promise<{ userId: string }> }) {
+  const params = await props.params;
   const userId = params.userId;
 
   const user = await prisma.user.findUnique({
@@ -38,9 +39,10 @@ export async function GET(_request: NextRequest, { params }: { params: { userId:
   return Response.json({ message: "OTP code sent to your email" });
 }
 
-export async function POST(request: NextRequest, { params }: { params: { userId: string } }) {
+export async function POST(_request: NextRequest, props: { params: Promise<{ userId: string }> }) {
+  const params = await props.params;
   const userId = params.userId;
-  const { otp } = await request.json();
+  const { otp } = await _request.json();
 
   const user = await prisma.user.findUnique({
     where: {
@@ -77,7 +79,8 @@ export async function POST(request: NextRequest, { params }: { params: { userId:
     }
   });
 
-  cookies().set("welcome.validation", "true");
+  const myCookies = await cookies();
+  myCookies.set("welcome.validation", "true");
 
   return Response.json({ message: "OTP validated successfully" });
 }

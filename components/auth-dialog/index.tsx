@@ -2,7 +2,7 @@
 import { useState } from "react";
 import SignIn from "./sign-in";
 import SignUp from "./sign-up";
-import Button from "../form-elements/button";
+import Button from "components/ui/button";
 import { ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogTrigger } from "components/ui/responsive-dialog";
 
 const AuthDialog = () => {

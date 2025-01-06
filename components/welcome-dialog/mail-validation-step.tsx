@@ -4,7 +4,7 @@ import { MdMarkEmailRead } from "react-icons/md";
 import { CgSpinner } from "react-icons/cg";
 import { DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "components/ui/dialog";
 import { toast } from "components/toast";
-import Button from "components/form-elements/button";
+import Button from "components/ui/button";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "components/form-elements/input-otp";
 import { cn } from "lib/utils";
 

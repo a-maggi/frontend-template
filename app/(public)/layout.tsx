@@ -18,7 +18,7 @@ export default async function Layout({ children }: LayoutProps) {
 
   return (
     <section className="h-screen w-full">
-      <Container>{children}</Container>
+      <Container session={session}>{children}</Container>
       {/* {session && <WelcomeDialog session={session} />} */}
     </section>
   );

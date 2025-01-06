@@ -10,7 +10,8 @@ export type WelcomeDialogProps = {
 };
 
 export const WelcomeDialog: React.FC<WelcomeDialogProps> = async ({ session }) => {
-  if (cookies().get("welcome.validation")) return null;
+  const myCookies = await cookies();
+  if (myCookies.get("welcome.validation")) return null;
   const user = await prisma.user.findUnique({
     where: {
       id: session.user.id
@@ -22,9 +23,7 @@ export const WelcomeDialog: React.FC<WelcomeDialogProps> = async ({ session }) =
     "use server";
     revalidatePath(`/`);
   };
-  const Modal = dynamic(() => import("./Steps"), {
-    ssr: false
-  });
+  const Modal = dynamic(() => import("./Steps"));
   return (
     <Suspense>
       <Modal user={user} onUpdated={handleDataRevalidation} />

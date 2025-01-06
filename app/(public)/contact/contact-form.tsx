@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import Button from "components/form-elements/button";
+import Button from "components/ui/button";
 import Label from "components/form-elements/label";
 import Input from "components/form-elements/input";
 import {
